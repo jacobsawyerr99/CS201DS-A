@@ -18,6 +18,7 @@ public class Main
                                      };
         System.out.println("\nWelcome to my program for CS201!\n");  
         getCap(statesAndCities);
+        printCurrent(statesAndCities);
     }    
 
 
@@ -43,6 +44,7 @@ public class Main
                     condition = true;
                     break;}
             }
+            // if input is not valid, prompt user to try again. moves on if they enter anything besides y or n
             if (!condition)
             {
                 System.out.println("\nThat is not a U.S. Capital! Try Again? \n  Y for yes/ N for no\n");
@@ -54,11 +56,19 @@ public class Main
                     break;
                 }
                 else{
-                    System.out.println("Invalid Input. Moving on to next part\n");
+                    System.out.println("\nInvalid Input. Moving on to next part of project\n");
                     break;
                 }
             }
         }
-    }                          
+    }    
+    
+    // next part of project is printing out current array
+    public static void printCurrent(String[][] statesAndCities){
+        for (int i = 0; i < 50; i++)
+        {
+            System.out.println("The capital of " + statesAndCities[0][i] + " is " + statesAndCities[1][i]);
+        }
+    }
 
 }
