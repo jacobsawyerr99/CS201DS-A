@@ -6,7 +6,6 @@
 
 import java.util.*;
 
-
 public class Main 
 {
     public static void main(String[] args) 
@@ -19,6 +18,7 @@ public class Main
         System.out.println("\nWelcome to my program for CS201!\n");  
         getCap(statesAndCities);
         printCurrent(statesAndCities);
+        bubbleSort(statesAndCities);
     }    
 
 
@@ -49,6 +49,7 @@ public class Main
             {
                 System.out.println("\nThat is not a U.S. Capital! Try Again? \n  Y for yes/ N for no\n");
                 String yayOrNay = sc.nextLine();
+                sc.close();
                 if(yayOrNay.equalsIgnoreCase("y")){
                     continue;
                 }
@@ -64,11 +65,37 @@ public class Main
     }    
     
     // next part of project is printing out current array
-    public static void printCurrent(String[][] statesAndCities){
+    public static void printCurrent(String[][] statesAndCities)
+    {
+        System.out.println("/nSORTED BY STATE:");
         for (int i = 0; i < 50; i++)
         {
-            System.out.println("The capital of " + statesAndCities[0][i] + " is " + statesAndCities[1][i]);
+            System.out.println("\nThe capital of " + statesAndCities[0][i] + " is " + statesAndCities[1][i]);
         }
     }
 
+    // next we bubble sort alphabetically by capital
+    public static void bubbleSort(String[][] statesAndCities)
+    {
+        String tempCity;
+        String tempState;
+        System.out.println("/nBUBBLE SORTED BY CAPITAL:");
+        for (int j = 0; j < 50; j++) {
+            for (int i = j + 1; i < 50; i++) {
+                if (statesAndCities[1][i].compareTo(statesAndCities[1][j]) < 0) {
+                tempCity = statesAndCities[1][j];
+                statesAndCities[1][j] = statesAndCities[1][i];
+                statesAndCities[1][i] = tempCity;
+                tempState = statesAndCities[0][j];
+                statesAndCities[0][j] = statesAndCities[0][i];
+                statesAndCities[0][i] = tempState;
+                }
+            }
+        }
+        // print out sorted by bubble sort
+        for (int i = 0; i < 50; i++)
+        {
+            System.out.println("\n"+ statesAndCities[1][i] + " is " + statesAndCities[0][i] + " Capital!");
+        }
+    }
 }
